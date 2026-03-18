@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أحمد ❤️ تسنيم</title>
+<style>
+body{margin:0;font-family:"Comic Sans MS", cursive;background:linear-gradient(180deg,#ff99cc,#ff4da6);color:white;text-align:center;overflow-x:hidden;}
+input,textarea,button{padding:10px;border-radius:15px;border:none;margin:5px;}
+button{background:white;color:#ff4da6;cursor:pointer;}
+#site{display:none;padding:20px;}
+.card{background:rgba(255,255,255,0.2);padding:15px;border-radius:20px;margin:15px;}
+.msg{background:white;color:black;margin:10px;padding:10px;border-radius:10px;display:flex;justify-content:space-between;align-items:center;}
+img{margin:5px;border-radius:10px;cursor:pointer;}
+.counter{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px;}
+.box{background:rgba(255,255,255,0.2);padding:15px;border-radius:20px;}
+.loveBox{display:none;white-space: pre-wrap; text-align:right; line-height:1.6; padding:20px; background: rgba(255,20,147,0.8); border-radius:25px; margin:15px; box-shadow:0 0 20px rgba(255,255,255,0.5);}
+.emoji{position:fixed;top:-50px;font-size:24px;animation:fall linear infinite;pointer-events:none;}
+@keyframes fall{to{transform:translateY(110vh);}}
+#imgModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);justify-content:center;align-items:center;z-index:9999;flex-direction:column;}
+#imgModal img{max-width:90%;max-height:80%;border-radius:15px;margin-bottom:10px;}
+#closeModal{position:absolute;top:20px;right:20px;font-size:30px;color:white;cursor:pointer;}
+#prevBtn,#nextBtn{background:white;color:#ff4da6;padding:10px 15px;margin:5px;border-radius:10px;cursor:pointer;}
+#giftBtn{margin:20px; padding:15px 25px; font-size:18px; background:white; color:#ff4da6; cursor:pointer; border-radius:20px; transition:0.3s;}
+</style>
+</head>
+<body>
+
+<div id="login">
+<h2>💖 أحمد & تسنيم 💖</h2>
+<input id="pass" placeholder="كلمة السر">
+<button onclick="check()">دخول</button>
+</div>
+
+<div id="site">
+
+<h2>💞 حكايـتنا 💞</h2>
+
+<div class="counter">
+<div class="box"><span id="years">0</span> سنوات</div>
+<div class="box"><span id="months">0</span> أشهر</div>
+<div class="box"><span id="days">0</span> أيام</div>
+<div class="box"><span id="hours">0</span> ساعات</div>
+<div class="box"><span id="minutes">0</span> دقائق</div>
+<div class="box"><span id="seconds">0</span> ثواني</div>
+</div>
+
+<button id="giftBtn" onclick="openGift()">اكبسي هون 🎁</button>
+
+<div class="loveBox" id="showLove">
+توتي بنوتي بدي احكيلك قديش انتي بتهميني 😌
+حرفيًا انتي حدا كثير مهم بالنسبه لالي وبهمني دايمًا تكوني مبسوطه ومرتاحه معي.
+مع الايام رح تعرفي شو احمد بالزبط انا بجوز بحكي وبعبر او كثير بعبر بس رح تعرفي انو هاض التعبير مو بس حكي انا كل كلمه بحكيها بتكون من قلبي طالعه والله 🙃.
+انا كل اشي بعملو بكون مشانك انتي دايمًا واي اشي كلام بحكيه سواء ذايقك او لا بكون عشانك خلي هالاشي ببالك وبجوز علي صفات وشغلات مو حلو بس هاض الاشي من الطرفين مني ومنك 🙂
+مش هسا تنكدي تحكيلي انا فيي شغلات مو حلوه😂 انو المقصد تبعي احنا بنكمل بعض انا وانتي بنكمل بعض يعمري 🙃 وخلينا دايمًا نتحمل بعض ونتنازل عادي ماينزل من حالنا بس عشان نضل  مره انا ومره انا ومره انا اتنازل  طبيعي اتنازل انا  🙂
+💔 انتي بزبطش دلوعتي بزبطش تتنازلي😌😂❤
+قلبي ودقاتو انتي الله يخليلنا لبعض ويبعد عنا كلشي مو حلو ويديمنا لبعض لاخر لحظه بعمرنا بحبك انا كثير ويارب دايمًا يودينا لطريق الصح للي يرضيه ويرضينا❤
+</div>
+
+<!-- أغانينا مباشرة تحت رسالة الحب -->
+<div class="card">
+<h3>🎵 أغانينا</h3>
+<input type="file" id="musicInput" accept="audio/*">
+<button onclick="addMusic()">أضف أغنية</button>
+<button onclick="playMusic()">تشغيل / إيقاف</button>
+<audio id="audioPlayer" controls style="display:none;"></audio>
+</div>
+
+<div class="card">
+<h3>🖼️ صورنا</h3>
+<input type="file" id="imgInput" accept="image/*">
+<button onclick="addImg()">رفع صورة</button>
+<button onclick="toggleGallery()">صورنا</button>
+<div id="gallery" style="display:none;"></div>
+</div>
+
+<div class="card">
+<h3>💬 رسائلنا</h3>
+<input id="msgInput" placeholder="اكتب رسالة">
+<button onclick="addMsg()">إرسال</button>
+<div id="msgs"></div>
+</div>
+
+<div class="card">
+<h3>📅 ذكرياتنا</h3>
+<input type="date" id="date">
+<input id="note" placeholder="اكتب الذكرى">
+<button onclick="saveMem()">حفظ</button>
+<div id="memories"></div>
+</div>
+
+<div id="imgModal">
+<span id="closeModal" onclick="closeModal()">×</span>
+<img id="modalImg">
+<div>
+<button id="prevBtn" onclick="prevImg()">السابق</button>
+<button id="nextBtn" onclick="nextImg()">التالي</button>
+</div>
+</div>
+
+</div>
+
+<script>
+/* 🙃❤تسجيل الدخول */
+function check(){
+    const passwordInput = document.getElementById("pass");
+    if(passwordInput.value === "15/9"){
+        document.getElementById("login").style.display = "none";
+        document.getElementById("site").style.display = "block";
+    } else {
+        alert("كلمة السر غلط 😅 حاول مرة ثانية");
+    }
+}
+
+/* عداد */
+const start=new Date("2024-11-21");
+setInterval(()=>{
+let now=new Date();let y=now.getFullYear()-start.getFullYear();let m=now.getMonth()-start.getMonth();let d=now.getDate()-start.getDate();
+if(d<0){m--;d+=30;}if(m<0){y--;m+=12;}
+let diff=now-start;
+document.getElementById("years").innerText=y;
+document.getElementById("months").innerText=m;
+document.getElementById("days").innerText=d;
+document.getElementById("hours").innerText=Math.floor(diff/3600000)%24;
+document.getElementById("minutes").innerText=Math.floor(diff/60000)%60;
+document.getElementById("seconds").innerText=Math.floor(diff/1000)%60;
+},1000);
+
+/* زر اكبسي هون + كتابة الرسالة */
+function openGift(){
+    const gift=document.getElementById("giftBtn");
+    gift.style.transform="scale(1.2)";
+    setTimeout(()=>{
+        gift.style.transform="scale(0)";
+        gift.style.display="none";
+        writeLove();
+    },800);
+}
+
+function writeLove(){
+    const love = document.getElementById("showLove");
+    love.style.display="block";
+    const text = love.innerText;
+    love.innerText = "";
+    let i = 0;
+    const interval = setInterval(()=>{
+        love.innerText += text.charAt(i);
+        i++;
+        if(i >= text.length) clearInterval(interval);
+    },10);
+}
+
+/* الصور */
+let currentImgIndex=0;
+function addImg(){
+    let file = imgInput.files[0]; 
+    if(!file) return;
+    let reader = new FileReader();
+    reader.onload = function(){
+        let imgs = JSON.parse(localStorage.getItem("imgs")||"[]");
+        imgs.push(reader.result);
+        localStorage.setItem("imgs", JSON.stringify(imgs));
+        loadImgs();
+    }
+    reader.readAsDataURL(file);
+    imgInput.value="";
+}
+function loadImgs(){
+    let imgs = JSON.parse(localStorage.getItem("imgs")||"[]");
+    let gallery=document.getElementById("gallery");
+    gallery.innerHTML="";
+    imgs.forEach((src,i)=>{
+        gallery.innerHTML += `<div class="msg"><img src="${src}" width="100" onclick="showModal(${i})"><button onclick="delImg(${i})">❌</button></div>`;
+    });
+}
+function toggleGallery(){
+    let g = document.getElementById("gallery");
+    g.style.display = g.style.display==="none"?"block":"none";
+}
+function delImg(i){
+    let imgs = JSON.parse(localStorage.getItem("imgs"));
+    imgs.splice(i,1);
+    localStorage.setItem("imgs", JSON.stringify(imgs));
+    loadImgs();
+}
+function showModal(i){
+    currentImgIndex=i;
+    let imgs = JSON.parse(localStorage.getItem("imgs")||"[]");
+    document.getElementById("modalImg").src=imgs[i];
+    document.getElementById("imgModal").style.display="flex";
+}
+function closeModal(){document.getElementById("imgModal").style.display="none";}
+function prevImg(){let imgs=JSON.parse(localStorage.getItem("imgs")||"[]"); currentImgIndex=(currentImgIndex-1+imgs.length)%imgs.length; document.getElementById("modalImg").src=imgs[currentImgIndex];}
+function nextImg(){let imgs=JSON.parse(localStorage.getItem("imgs")||"[]"); currentImgIndex=(currentImgIndex+1)%imgs.length; document.getElementById("modalImg").src=imgs[currentImgIndex];}
+loadImgs();
+
+/* رسائلنا */
+function addMsg(){let text=msgInput.value.trim();if(!text) return;let msgs=JSON.parse(localStorage.getItem("msgs")||"[]");msgs.push(text);localStorage.setItem("msgs",JSON.stringify(msgs));msgInput.value="";loadMsgs();}
+function loadMsgs(){let msgs=JSON.parse(localStorage.getItem("msgs")||"[]");let msgsDiv=document.getElementById("msgs");msgsDiv.innerHTML="";msgs.forEach((m,i)=>{msgsDiv.innerHTML+=`<div class="msg">${m} <button onclick="delMsg(${i})">❌</button></div>`;});}
+function delMsg(i){let msgs=JSON.parse(localStorage.getItem("msgs"));msgs.splice(i,1);localStorage.setItem("msgs",JSON.stringify(msgs));loadMsgs();}
+loadMsgs();
+
+/* ذكريات */
+function saveMem(){if(!date.value||!note.value){alert("اكتب التاريخ والملاحظة");return;}let mem=JSON.parse(localStorage.getItem("mem")||"[]");mem.push({d:date.value,n:note.value});localStorage.setItem("mem",JSON.stringify(mem));date.value="";note.value="";loadMem();}
+function delMem(i){let mem=JSON.parse(localStorage.getItem("mem"));mem.splice(i,1);localStorage.setItem("mem",JSON.stringify(mem));loadMem();}
+function loadMem(){let mem=JSON.parse(localStorage.getItem("mem")||"[]");memories.innerHTML="";mem.forEach((m,i)=>{memories.innerHTML+=`<div class="msg">${m.d} - ${m.n} <button onclick="delMem(${i})">❌</button></div>`;});}
+loadMem();
+
+/* ايموجيات رومانسية */
+setInterval(()=>{let e=document.createElement("div"); e.className="emoji"; e.innerText="💖"; e.style.left=Math.random()*100+"%"; e.style.animationDuration=(4+Math.random()*4)+"s"; document.body.appendChild(e); setTimeout(()=>e.remove(),8000);},500);
+
+/* أغاني */
+let audioPlayer = document.getElementById("audioPlayer");
+function addMusic(){
+    let file = musicInput.files[0];
+    if(!file) return;
+    let reader = new FileReader();
+    reader.onload = function(){
+        audioPlayer.src = reader.result;
+        audioPlayer.style.display = "block";
+        audioPlayer.play();
+    }
+    reader.readAsDataURL(file);
+    musicInput.value = "";
+}
+function playMusic(){
+    if(audioPlayer.paused) audioPlayer.play();
+    else audioPlayer.pause();
+}
+</script>
+
+</body>
+</html>
