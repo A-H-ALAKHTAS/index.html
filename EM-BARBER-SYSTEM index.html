@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E&M BARBER — الموقع الرسمي</title>
+<style>
+:root{--bg:#060606;--bg2:#0d0d0d;--card:#121212;--card2:#181818;--line:#292929;--text:#f7f7f7;--muted:#969696;--green:#3cdd8d;--red:#ff6262;--gold:#d8be69;--blue:#0a84ff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,Tahoma,sans-serif;background:radial-gradient(circle at 50% -10%,#262626 0,#0b0b0b 29%,#050505 76%);color:var(--text);min-height:100vh}
+button,input,select,textarea{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}
+.topbar{height:72px;border-bottom:1px solid var(--line);background:rgba(7,7,7,.9);backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:60}
+.logo{font-size:24px;font-weight:900;letter-spacing:1px}.logo small{display:block;color:#808080;font-size:9px;font-weight:400;letter-spacing:2px;margin-top:4px}
+.toplinks{display:flex;gap:6px;flex-wrap:wrap}.toplinks button{border:1px solid transparent;background:transparent;color:#aaa;padding:10px 12px;border-radius:10px}.toplinks button:hover,.toplinks button.active{background:#191919;color:#fff;border-color:#2c2c2c}
+.wrap{max-width:1320px;margin:auto;padding:0 22px}.hide{display:none!important}.login{min-height:100vh;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at 50% 20%,#222,#070707 65%)}.login-box{width:min(430px,100%);background:#121212;border:1px solid #2d2d2d;border-radius:20px;padding:25px;box-shadow:0 30px 100px rgba(0,0,0,.45)}.login-box h2{text-align:center;font-size:26px}.login-box p{text-align:center;color:#888;font-size:12px;margin:8px 0 20px}.login-logo{text-align:center;font-size:29px;font-weight:900;letter-spacing:2px}.login-field{margin-top:11px}.login-field label{display:block;color:#999;font-size:11px;margin-bottom:6px}.login-error{color:#ff7777;font-size:11px;margin-top:9px;min-height:16px;text-align:center}
+.hero{min-height:560px;display:grid;place-items:center;text-align:center;padding:70px 10px 45px;position:relative;overflow:hidden}.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;filter:blur(1px);pointer-events:none}.hero:before{width:650px;height:650px;top:-350px;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(255,255,255,.1),transparent 68%)}.hero:after{width:300px;height:300px;right:-160px;bottom:-150px;background:radial-gradient(circle,rgba(255,255,255,.04),transparent 70%)}
+.hero-content{position:relative;z-index:1}.eyebrow{display:inline-flex;padding:7px 12px;border:1px solid #333;border-radius:999px;background:#111;color:#aaa;font-size:10px;letter-spacing:1.4px}
+.hero h1{font-size:clamp(50px,8vw,95px);letter-spacing:5px;margin:17px 0 7px}.hero p{max-width:720px;margin:auto;line-height:1.9;color:#aaa;font-size:15px}
+.open-status{display:inline-flex;align-items:center;gap:9px;margin-top:23px;padding:10px 15px;background:#111;border:1px solid #303030;border-radius:999px;font-size:12px}.dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 12px rgba(60,221,141,.45)}.dot.red{background:var(--red);box-shadow:0 0 12px rgba(255,98,98,.3)}
+.hero-actions{display:flex;justify-content:center;gap:10px;margin-top:22px;flex-wrap:wrap}
+.btn{border:1px solid #383838;background:#151515;color:#fff;border-radius:11px;padding:11px 15px}.btn:hover{background:#212121}.btn.white{background:#fff;color:#111;border-color:#fff;font-weight:700}.btn.small{padding:8px 10px;font-size:11px}.btn.danger{border-color:#532828;color:#ff8f8f}
+.section{padding:25px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:16px}.section-head h2{font-size:25px}.section-head p{color:#888;font-size:12px}
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.profile,.service,.review,.info,.work-card{background:linear-gradient(180deg,#171717,#111);border:1px solid var(--line);border-radius:17px}
+.profile{padding:17px}.profile-top{display:flex;align-items:center;gap:11px}.avatar{width:53px;height:53px;border-radius:50%;background:#f3f3f3;color:#111;display:grid;place-items:center;font-weight:900;font-size:20px}.name{font-weight:800;font-size:16px}.muted{color:#8e8e8e;font-size:12px;margin-top:4px}.pill{margin-right:auto;border:1px solid #353535;padding:5px 8px;border-radius:999px;font-size:10px}.green{color:var(--green);border-color:#23593c}.red{color:var(--red);border-color:#5a2a2a}.gold{color:var(--gold);border-color:#5c4d24}
+.hours{margin-top:15px;padding-top:13px;border-top:1px solid #252525;color:#bbb;font-size:11px;line-height:1.9}
+.service{padding:17px}.service h3{font-size:16px}.duration{font-size:27px;font-weight:800;margin-top:12px}.service small{color:#888}
+.works{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.work-card{overflow:hidden}.work-img{height:200px;background:linear-gradient(135deg,#252525,#101010);display:grid;place-items:center;font-size:44px;color:#777;overflow:hidden}.work-img img{width:100%;height:100%;object-fit:cover}.work-body{padding:13px}.work-body b{font-size:14px}.work-body span{display:block;color:#8e8e8e;font-size:11px;margin-top:5px}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.review{padding:15px}.review-top{display:flex;align-items:center;gap:10px}.review-avatar{width:38px;height:38px;border-radius:50%;background:#fff;color:#111;display:grid;place-items:center;font-weight:800}.review-stars{margin-right:auto;color:var(--gold);font-size:14px;letter-spacing:1px}.review p{color:#c4c4c4;line-height:1.8;font-size:12px;margin-top:12px}.review small{display:block;color:#777;margin-top:10px;font-size:10px}
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.info{padding:16px}.info strong{font-size:14px}.info p{color:#969696;font-size:12px;line-height:1.8;margin-top:7px}
+.booking-box{background:linear-gradient(180deg,#161616,#101010);border:1px solid #303030;border-radius:20px;padding:20px;box-shadow:0 25px 70px rgba(0,0,0,.3)}.form-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.field label{display:block;color:#999;font-size:11px;margin-bottom:6px}.field.full{grid-column:1/-1}input,select,textarea{width:100%;background:#0b0b0b;color:#fff;border:1px solid #333;border-radius:10px;padding:12px;outline:none}textarea{min-height:95px;resize:vertical}input:focus,select:focus,textarea:focus{border-color:#666}.hint{margin-top:12px;color:#888;font-size:11px;line-height:1.7}.result{margin-top:12px;padding:12px;background:#101010;border:1px solid #292929;border-radius:11px;color:#ccc;font-size:12px;line-height:1.8}
+.admin{padding:24px 0}.admin-grid{display:grid;grid-template-columns:235px 1fr;gap:15px}.side,.admin-card{background:#111;border:1px solid var(--line);border-radius:16px}.side{padding:14px;height:max-content;position:sticky;top:90px}.side h3{margin-bottom:9px}.side button{display:block;width:100%;text-align:right;background:transparent;color:#aaa;border:1px solid transparent;padding:11px;border-radius:10px;margin:4px 0}.side button:hover,.side button.active{background:#1b1b1b;color:#fff;border-color:#2c2c2c}
+.admin-head{margin-bottom:14px}.admin-head h2{font-size:29px}.admin-head p{color:#888;font-size:12px;margin-top:5px}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}.metric{background:#151515;border:1px solid var(--line);border-radius:14px;padding:15px}.metric span{color:#8a8a8a;font-size:11px}.metric b{display:block;font-size:27px;margin-top:8px}
+.admin-card{padding:17px;margin-top:12px}.admin-card h3{margin-bottom:5px}.desc{font-size:11px;color:#888;margin-bottom:13px}.admin-barbers{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}.admin-person{background:#181818;border:1px solid #2b2b2b;border-radius:14px;padding:14px}.person-head{display:flex;align-items:center;gap:10px}.person-title{flex:1}.status-select{margin-top:12px}.availability{margin-top:12px;padding-top:12px;border-top:1px solid #292929}.toolbar{display:flex;gap:7px;flex-wrap:wrap}.schedule{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.schedule-box{background:#181818;border:1px solid #2b2b2b;border-radius:13px;padding:13px}.admin-services{display:grid;gap:8px}.service-row{display:flex;align-items:center;gap:10px;padding:12px;background:#181818;border:1px solid #2b2b2b;border-radius:12px}.service-row>div:first-child{flex:1}
+.admin-works{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.admin-work{background:#181818;border:1px solid #2b2b2b;border-radius:12px;overflow:hidden}.admin-work .thumb{height:140px;background:linear-gradient(135deg,#2a2a2a,#0f0f0f);display:grid;place-items:center;font-size:30px;color:#777;overflow:hidden}.admin-work .thumb img{width:100%;height:100%;object-fit:cover}.admin-work .body{padding:12px;display:flex;flex-direction:column;gap:8px}.file-upload-btn{background:#222;border:1px solid #3a3a3a;color:#ccc;padding:7px;border-radius:8px;font-size:11px;text-align:center;cursor:pointer}.file-upload-btn:hover{background:#2a2a2a;color:#fff}
+.reviews-table{overflow:auto}.reviews-table table{width:100%;border-collapse:collapse;min-width:750px}.reviews-table th,.reviews-table td{padding:11px 8px;border-bottom:1px solid #252525;text-align:right;font-size:11px}.reviews-table th{color:#888;font-weight:600}.starview{color:var(--gold);letter-spacing:1px}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);align-items:center;justify-content:center;padding:18px;z-index:100}.modal.show{display:flex}.modal-box{width:min(600px,100%);background:#151515;border:1px solid #353535;border-radius:18px;padding:18px;max-height:90vh;overflow:auto}.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.footer{border-top:1px solid var(--line);margin-top:40px;padding:25px 0 35px;text-align:center;color:#777;font-size:11px}
+.toast{position:fixed;left:18px;bottom:18px;background:#fff;color:#111;padding:12px 15px;border-radius:11px;font-size:12px;font-weight:700;z-index:200;transform:translateY(25px);opacity:0;pointer-events:none;transition:.25s}.toast.show{opacity:1;transform:translateY(0)}
+.contact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
+.contact-card{background:linear-gradient(180deg,#171717,#111);border:1px solid var(--line);border-radius:17px;padding:18px;text-align:center}.contact-icon{font-size:30px;margin-bottom:10px}.contact-card h3{font-size:15px;margin-bottom:7px}.contact-card p{color:#999;font-size:12px;line-height:1.7;min-height:38px;word-break:break-word}.contact-card .btn{display:block;width:100%;margin-top:13px}.btn.disabled{opacity:.45;pointer-events:none}
+.contact-admin-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.contact-admin-box{background:#181818;border:1px solid #2b2b2b;border-radius:13px;padding:14px}.contact-admin-box h4{font-size:14px;margin-bottom:10px}
+
+@media(max-width:1050px){.works,.admin-works{grid-template-columns:repeat(2,1fr)}.metrics{grid-template-columns:1fr 1fr}.cards3,.reviews{grid-template-columns:1fr 1fr}.admin-grid{grid-template-columns:1fr}.side{position:static}}
+@media(max-width:650px){.topbar{height:auto;min-height:68px;flex-wrap:wrap;padding:9px 13px}.wrap{padding:0 13px}.form-grid,.cards3,.reviews,.info-grid,.schedule{grid-template-columns:1fr}.works,.admin-works{grid-template-columns:1fr 1fr}.hero{min-height:500px}.hero h1{font-size:48px}.admin-barbers{grid-template-columns:1fr}.metrics{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="logo">E&M BARBER<small>THE BARBER EXPERIENCE</small></div>
+  <nav class="toplinks">
+    <button id="navHome" class="active" onclick="showSite('home')">الرئيسية</button>
+    <button onclick="scrollToId('team')">فريقنا</button>
+    <button onclick="scrollToId('works')">أعمالنا</button>
+    <button onclick="scrollToId('reviews')">التقييمات</button>
+    <button onclick="scrollToId('booking')">الحجز</button>
+    <button onclick="scrollToId('contact')">تواصل معنا</button>
+    <button id="navAdmin" onclick="openAdminLogin()">الإدارة</button>
+  </nav>
+</header>
+
+<main id="site">
+<div class="wrap">
+<section class="hero" id="home">
+<div class="hero-content">
+<span class="eyebrow">WELCOME TO E&M BARBER</span>
+<h1>E&M BARBER</h1>
+<p>تجربة مختلفة بالحلاقة. تعرّف على فريقنا، شوف أعمالنا، اختار الوقت المناسب واحجز موعدك بكل سهولة.</p>
+<div class="open-status"><span id="siteDot" class="dot"></span><b id="siteStatus">المحل مفتوح الآن</b></div>
+<div class="hero-actions">
+<button class="btn white" onclick="scrollToId('booking')">احجز موعدك</button>
+<button class="btn" onclick="scrollToId('works')">شوف أعمالنا</button>
+</div>
+</div>
+</section>
+
+<section id="team" class="section">
+<div class="section-head"><div><h2>فريقنا</h2><p>حالة الحلاق الحالية لا تلغي الحجز؛ المواعيد تعتمد على أوقات التوفر.</p></div></div>
+<div id="publicBarbers" class="cards3"></div>
+</section>
+
+<section class="section">
+<div class="section-head"><div><h2>خدماتنا</h2><p>مدة الخدمة فقط، بدون عرض الأسعار.</p></div></div>
+<div id="publicServices" class="cards3"></div>
+</section>
+
+<section id="works" class="section">
+<div class="section-head"><div><h2>أعمالنا</h2><p>معرض عام للمحل — غير مرتبط بحلاق معيّن.</p></div></div>
+<div id="publicWorks" class="works"></div>
+</section>
+
+<section id="reviews" class="section">
+<div class="section-head"><div><h2>آراء زبائننا</h2><p id="publicRatingSummary">التقييمات</p></div><button class="btn white small" onclick="openReview()">قيّم تجربتك ⭐</button></div>
+<div id="publicReviews" class="reviews"></div>
+</section>
+
+<section id="booking" class="section">
+<div class="section-head"><div><h2>احجز موعدك</h2><p>اختر الحلاق واليوم والخدمة، وسيظهر فقط الوقت الذي يناسب مدة الخدمة وتوفر الحلاق (ملاحظة: يوم الأحد عطلة رسمية).</p></div></div>
+<div class="booking-box">
+<div class="form-grid">
+<div class="field"><label>الحلاق</label><select id="bBarber" onchange="refreshBookingTimes()"></select></div>
+<div class="field"><label>الخدمة</label><select id="bService" onchange="refreshBookingTimes()"></select></div>
+<div class="field"><label>اليوم</label><select id="bDay" onchange="refreshBookingTimes()"></select></div>
+<div class="field"><label>الوقت</label><select id="bTime"></select></div>
+<div class="field"><label>الاسم</label><input id="bName" placeholder="اسمك"></div>
+<div class="field"><label>رقم الهاتف</label><input id="bPhone" placeholder="07xxxxxxxx"></div>
+</div>
+<div class="hint">النظام يحسب مدة الخدمة. مثلاً خدمة 60 دقيقة لا تسمح بالحجز إذا بقي للحلاق أقل من ساعة من نهاية فترة التوفر.</div>
+<button class="btn white" style="width:100%;margin-top:13px" onclick="submitBooking()">إرسال طلب الحجز</button>
+<div id="bookingResult" class="result">ابدأ باختيار الحلاق واليوم لمعرفة الأوقات المتاحة.</div>
+</div>
+</section>
+
+<section id="contact" class="section">
+ <div class="section-head"><div><h2>موقعنا وتواصل معنا</h2><p>تواصل معنا أو زورنا في موقعنا.</p></div></div>
+ <div class="contact-grid">
+  <div class="contact-card"><div class="contact-icon">📍</div><h3>موقعنا</h3><p id="publicAddress">أضف عنوان المحل من الإدارة</p><a id="publicMapBtn" class="btn white disabled" href="#" target="_blank" rel="noopener">فتح الموقع</a></div>
+  <div class="contact-card"><div class="contact-icon">📞</div><h3>اتصال مباشر</h3><p id="publicPhone">أضف رقم التواصل من الإدارة</p><a id="publicPhoneBtn" class="btn white disabled" href="#">اتصل بنا</a></div>
+  <div class="contact-card"><div class="contact-icon">💬</div><h3>واتساب</h3><p id="publicWhatsapp">تواصل معنا عبر واتساب</p><a id="publicWhatsappBtn" class="btn white disabled" href="#" target="_blank" rel="noopener">فتح واتساب</a></div>
+  <div class="contact-card"><div class="contact-icon">📸</div><h3>إنستغرام</h3><p id="publicInstagram">أضف حساب الإنستغرام من الإدارة</p><a id="publicInstagramBtn" class="btn white disabled" href="#" target="_blank" rel="noopener">زيارة الإنستغرام</a></div>
+ </div>
+</section>
+
+<footer class="footer">E&M BARBER — THE BARBER EXPERIENCE</footer>
+</div>
+</main>
+
+<section id="loginScreen" class="login hide">
+<div class="login-box">
+<div class="login-logo">E&M BARBER</div>
+<h2 style="margin-top:10px">دخول الإدارة</h2>
+<p>هذه الصفحة مخصصة لإدارة المحل فقط</p>
+<div class="login-field"><label>اسم المستخدم</label><input id="loginUser" autocomplete="off" placeholder="اسم المستخدم"></div>
+<div class="login-field"><label>كلمة المرور</label><input id="loginPass" type="password" autocomplete="off" placeholder="كلمة المرور"></div>
+<button class="btn white" style="width:100%;margin-top:14px" onclick="loginAdmin()">دخول</button>
+<div id="loginError" class="login-error"></div>
+
+</div></section>
+
+<main id="admin" class="hide admin">
+<div class="wrap">
+<div class="admin-grid">
+<aside class="side">
+<h3>لوحة الإدارة</h3>
+<button onclick="adminScroll('people')">✂️ الحلاقين والتوفر</button>
+<button onclick="adminScroll('shop')">🕐 دوام المحل</button>
+<button onclick="adminScroll('services')">🧾 الخدمات</button>
+<button onclick="adminScroll('worksAdmin')">📸 أعمالنا</button>
+<button onclick="adminScroll('reviewsAdmin')">⭐ التقييمات</button>
+<button onclick="adminScroll('contactAdmin')">📱 معلومات المحل والتواصل</button>
+<button onclick="showSite()">👁️ معاينة الموقع</button><button onclick="logoutAdmin()">🚪 تسجيل خروج</button>
+<div class="note-box" style="margin-top:10px;padding:10px;border:1px dashed #3b3b3b;border-radius:10px;color:#888;font-size:10px;line-height:1.8">كل ما تغيره هنا يظهر في نموذج موقع الزبائن مباشرة داخل نفس الجهاز.</div>
+</aside>
+<div class="admin-main">
+<div class="admin-head"><h2>إدارة E&M BARBER</h2><p>تحكم بالحلاقين، أوقات التوفر، المحل، الخدمات، أعمالنا والتقييمات.</p></div>
+<div class="metrics">
+<div class="metric"><span>متاح الآن</span><b id="mAvail">0</b></div>
+<div class="metric"><span>مشغول الآن</span><b id="mBusy">0</b></div>
+<div class="metric"><span>غير متاح</span><b id="mOff">0</b></div>
+<div class="metric"><span>متوسط التقييم</span><b id="mRating">0.0</b></div>
+</div>
+
+<section id="people" class="admin-card"><h3>الحلاقين والتوفر</h3><p class="desc">حالة الحلاق منفصلة عن أوقات الحجز. تقدر تخليه «مشغول الآن» ومع ذلك تسمح للزبون بالحجز في أوقات لاحقة.</p><div id="adminBarbers" class="admin-barbers"></div></section>
+
+<section id="shop" class="admin-card"><h3>دوام المحل</h3><p class="desc">حدد من أي ساعة إلى أي ساعة المحل مفتوح.</p>
+<div class="schedule">
+<div class="schedule-box"><label class="muted">من</label><input id="shopOpen" type="time"><label class="muted" style="display:block;margin-top:8px">إلى</label><input id="shopClose" type="time"></div>
+<div class="schedule-box"><b id="shopStateText">المحل مفتوح</b><button id="shopToggle" class="btn white" style="width:100%;margin-top:10px" onclick="toggleShop()">إغلاق المحل</button><button class="btn" style="width:100%;margin-top:7px" onclick="saveShopHours()">حفظ أوقات الدوام</button></div>
+</div></section>
+
+<section id="services" class="admin-card"><h3>الخدمات</h3><p class="desc">تعديل الاسم والمدة فقط.</p><div id="adminServices" class="admin-services"></div></section>
+
+<section id="worksAdmin" class="admin-card">
+<h3>أعمالنا العامة 📸</h3>
+<p class="desc">رفع صورة من الجهاز أو وضع رابط صورة مباشر لعرضها في الموقع للزبائن.</p>
+<div id="adminWorks" class="admin-works"></div>
+<button class="btn white" style="margin-top:15px" onclick="addWork()">+ إضافة عمل جديد</button>
+</section>
+
+<section id="contactAdmin" class="admin-card">
+<h3>📱 معلومات المحل والتواصل</h3><p class="desc">من هنا تدخل معلومات المحل والرقم والواتساب والإنستغرام ورابط موقع المحل، وبعد الحفظ تظهر مباشرة داخل الموقع.</p>
+<div class="contact-admin-grid">
+ <div class="contact-admin-box"><h4>📍 موقع المحل</h4><div class="field"><label>عنوان المحل</label><input id="addressInput" placeholder="مثال: عمّان - الأردن"></div><div class="field" style="margin-top:10px"><label>رابط Google Maps</label><input id="mapUrlInput" type="url" placeholder="https://maps.google.com/..."></div></div>
+ <div class="contact-admin-box"><h4>📞 رقم التواصل</h4><div class="field"><label>رقم الهاتف</label><input id="phoneInput" type="tel" placeholder="0790000000"></div></div>
+ <div class="contact-admin-box"><h4>💬 واتساب</h4><div class="field"><label>رقم واتساب</label><input id="whatsappNumberInput" type="tel" placeholder="962790000000"></div><div class="field" style="margin-top:10px"><label>رابط واتساب</label><input id="whatsappUrlInput" type="url" placeholder="https://wa.me/962790000000"></div></div>
+ <div class="contact-admin-box"><h4>📸 إنستغرام</h4><div class="field"><label>اسم الحساب</label><input id="instagramHandleInput" placeholder="@em.barber"></div><div class="field" style="margin-top:10px"><label>رابط صفحة الإنستغرام</label><input id="instagramUrlInput" type="url" placeholder="https://instagram.com/..."></div></div>
+ <div class="contact-admin-box"><h4>💬 نص التواصل</h4><div class="field"><label>النص الذي يظهر للزبون</label><textarea id="contactNoteInput" placeholder="للحجز والاستفسار تواصل معنا..."></textarea></div></div>
+</div>
+<button class="btn white" style="width:100%;margin-top:14px" onclick="saveContactInfo()">💾 حفظ معلومات المحل والتواصل</button>
+</section>
+
+<section id="reviewsAdmin" class="admin-card"><h3>تقييمات الزبائن</h3><p class="desc">التقييمات الجديدة تظهر هنا. تقدر تخفي أي تقييم، والتقييم المخفي لا يدخل في المتوسط المعروض للزبائن.</p>
+<div class="reviews-table"><table><thead><tr><th>الزبون</th><th>التقييم</th><th>التعليق</th><th>التاريخ</th><th>الحالة</th><th>إجراء</th></tr></thead><tbody id="reviewsAdminTable"></tbody></table></div>
+</section>
+</div></div></div>
+</main>
+
+<div id="modal" class="modal" onclick="closeModal(event)"><div class="modal-box" onclick="event.stopPropagation()"><div class="modal-head"><h3 id="modalTitle">إضافة</h3><button class="btn small" onclick="closeModal()">✕</button></div><div id="modalBody"></div></div></div>
+<div id="toast" class="toast"></div>
+
+<script>
+const KEY='em_final_site_demo_v4';
+const days=['الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت']; // استثناء الأحد للزبون
+const allDays=['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+
+const seed={
+ store:{open:true,openTime:'10:00',closeTime:'22:00',address:'',mapUrl:'',phone:'',whatsappNumber:'',whatsappUrl:'',instagramHandle:'',instagramUrl:'',contactNote:'يمكنك التواصل معنا للحجز والاستفسار.'},
+ barbers:[
+  {id:1,name:'أحمد',specialty:'Classic & Fade',status:'متاح',availability:{'الاثنين':[['10:00','22:00']],'الثلاثاء':[['12:00','18:00']],'الأربعاء':[['10:00','22:00']],'الخميس':[['10:00','20:00']],'الجمعة':[['14:00','22:00']],'السبت':[['10:00','22:00']]}},
+  {id:2,name:'إسلام',specialty:'Fade & Beard',status:'مشغول',availability:{'الاثنين':[['10:00','22:00']],'الثلاثاء':[['10:00','17:00']],'الأربعاء':[['10:00','22:00']],'الخميس':[['12:00','22:00']],'الجمعة':[['14:00','22:00']],'السبت':[['10:00','22:00']]}},
+  {id:3,name:'محمد',specialty:'VIP Experience',status:'غير متاح',availability:{'الاثنين':[['16:00','22:00']],'الثلاثاء':[['16:00','22:00']],'الأربعاء':[['16:00','22:00']],'الخميس':[['16:00','22:00']],'الجمعة':[['16:00','22:00']],'السبت':[['16:00','22:00']]}}
+ ],
+ services:[{id:1,name:'قص شعر',duration:30},{id:2,name:'لحية',duration:20},{id:3,name:'قص + لحية',duration:45},{id:4,name:'VIP Experience',duration:60}],
+ works:[
+  {id:1,title:'Classic Fade',image_url:'',sub:'عمل من أعمال E&M BARBER'},
+  {id:2,title:'Clean Beard',image_url:'',sub:'تفاصيل دقيقة'},
+  {id:3,title:'Modern Style',image_url:'',sub:'ستايل عصري'}
+ ],
+ reviews:[
+  {id:1,name:'محمد',stars:5,text:'تجربة ممتازة جداً، الشغل مرتب والتفاصيل ممتازة.',date:'2026-09-03',visible:true},
+  {id:2,name:'مهند',stars:5,text:'الحلاقين محترمين والحجز كان سهل وسريع.',date:'2026-09-02',visible:true}
+ ],
+ bookings:[]
+};
+
+let data=JSON.parse(localStorage.getItem(KEY)||'null')||seed;
+if(!data.store) data.store={};
+if(data.store.name===undefined) data.store.name='E&M BARBER';
+if(data.store.address===undefined) data.store.address='';
+if(data.store.mapUrl===undefined) data.store.mapUrl='';
+if(data.store.phone===undefined) data.store.phone='';
+if(data.store.whatsappNumber===undefined) data.store.whatsappNumber='';
+if(data.store.whatsappUrl===undefined) data.store.whatsappUrl='';
+if(data.store.instagramHandle===undefined) data.store.instagramHandle='';
+if(data.store.instagramUrl===undefined) data.store.instagramUrl='';
+if(data.store.contactNote===undefined) data.store.contactNote='يمكنك التواصل معنا للحجز والاستفسار.';
+
+function save(){localStorage.setItem(KEY,JSON.stringify(data))}
+function setPublicLink(element,url){if(url){element.href=url;element.classList.remove('disabled')}else{element.href='#';element.classList.add('disabled')}}
+function scrollToId(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth'})}
+function adminScroll(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth'})}
+function showSite(){document.getElementById('site').classList.remove('hide');document.getElementById('admin').classList.add('hide');document.getElementById('navHome').classList.add('active');document.getElementById('navAdmin').classList.remove('active');renderAll();window.scrollTo({top:0,behavior:'smooth'})}
+function showAdmin(){if(sessionStorage.getItem('em_admin_auth')!=='1'){openAdminLogin();return}document.getElementById('loginScreen').classList.add('hide');document.getElementById('site').classList.add('hide');document.getElementById('admin').classList.remove('hide');document.getElementById('navHome').classList.remove('active');document.getElementById('navAdmin').classList.add('active');renderAll();window.scrollTo({top:0,behavior:'smooth'})}
+function openAdminLogin(){if(sessionStorage.getItem('em_admin_auth')==='1'){showAdmin();return}document.getElementById('site').classList.add('hide');document.getElementById('admin').classList.add('hide');document.getElementById('loginScreen').classList.remove('hide');document.getElementById('navHome').classList.remove('active');document.getElementById('navAdmin').classList.add('active');document.getElementById('loginError').textContent='';document.getElementById('loginUser').focus();window.scrollTo({top:0,behavior:'smooth'})}
+function loginAdmin(){const u=document.getElementById('loginUser').value.trim(),p=document.getElementById('loginPass').value;if(u==='adminhr'&&p==='em1em1em1'){sessionStorage.setItem('em_admin_auth','1');document.getElementById('loginPass').value='';showAdmin();showToast('تم تسجيل الدخول')}else{document.getElementById('loginError').textContent='اسم المستخدم أو كلمة المرور غير صحيحة'}}
+function logoutAdmin(){sessionStorage.removeItem('em_admin_auth');showSite();showToast('تم تسجيل الخروج')}
+function statusClass(s){return s==='متاح'?'green':s==='مشغول'?'gold':'red'}
+function fmtTime(t){
+  if(!t) return '';
+  let [h,m]=t.split(':').map(Number);
+  const ap=h>=12?'م':'ص';
+  h=h%12||12;
+  return `${h}:${String(m).padStart(2,'0')} ${ap}`;
+}
+
+function stars(n){return '★'.repeat(n)+'☆'.repeat(5-n)}
+function availabilitySummary(av){return days.map(d=>`${d}: ${(av[d]||[]).length?(av[d]||[]).map(r=>r.map(fmtTime).join(' – ')).join(' + '):'غير متاح'}`).join(' · ')}
+function timesForRanges(ranges,duration){
+ const out=[];for(const r of ranges){let [h,m]=r[0].split(':').map(Number),[eh,em]=r[1].split(':').map(Number),cur0=h*60+m,end=eh*60+em;
+  for(let cur=cur0;cur+duration<=end;cur+=30)out.push(String(Math.floor(cur/60)).padStart(2,'0')+':'+String(cur%60).padStart(2,'0'));
+ }return out
+}
+
+function renderAll(){renderPublic();renderAdmin()}
+function renderPublic(){
+ const s=data.store;
+ siteDot.className='dot'+(s.open?'':' red');siteStatus.textContent=s.open?`المحل مفتوح الآن • حتى ${fmtTime(s.closeTime)}`:`المحل مغلق الآن • يفتح ${fmtTime(s.openTime)}`;
+ publicAddress.textContent=s.address||'أضف عنوان المحل من الإدارة'; publicPhone.textContent=s.phone||'أضف رقم التواصل من الإدارة'; publicWhatsapp.textContent=s.whatsappNumber?`واتساب: ${s.whatsappNumber}`:'تواصل معنا عبر واتساب'; publicInstagram.textContent=s.instagramHandle||'أضف حساب الإنستغرام من الإدارة'; setPublicLink(publicMapBtn,s.mapUrl); setPublicLink(publicWhatsappBtn,s.whatsappUrl); setPublicLink(publicInstagramBtn,s.instagramUrl); if(s.phone){publicPhoneBtn.href='tel:'+s.phone.replace(/[^\d+]/g,'');publicPhoneBtn.classList.remove('disabled')}else{publicPhoneBtn.href='#';publicPhoneBtn.classList.add('disabled')}
+ publicBarbers.innerHTML=data.barbers.map(b=>`<div class="profile"><div class="profile-top"><div class="avatar">${b.name[0]}</div><div><div class="name">${b.name}</div><div class="muted">${b.specialty}</div></div><span class="pill ${statusClass(b.status)}">${b.status}</span></div><div class="hours"><b>أوقات الحجز:</b><br>${availabilitySummary(b.availability)}</div></div>`).join('');
+ publicServices.innerHTML=data.services.map(s=>`<div class="service"><h3>${s.name}</h3><div class="duration">${s.duration} دقيقة</div><small>مدة الخدمة</small></div>`).join('');
+ 
+ // عرض معرض أعمالنا للزبائن بصور حقيقية
+ publicWorks.innerHTML=data.works.map(w=>`
+   <div class="work-card">
+     <div class="work-img">
+       ${w.image_url ? `<img src="${w.image_url}" alt="${escapeAttr(w.title)}">` : `✂️`}
+     </div>
+     <div class="work-body">
+       <b>${escapeHtml(w.title)}</b>
+       <span>${escapeHtml(w.sub || '')}</span>
+     </div>
+   </div>
+ `).join('');
+
+ const visible=data.reviews.filter(r=>r.visible),avg=visible.length?visible.reduce((a,r)=>a+r.stars,0)/visible.length:0;
+ publicRatingSummary.textContent=`${avg.toFixed(1)} / 5 • ${visible.length} تقييم`;
+ publicReviews.innerHTML=visible.map(r=>`<div class="review"><div class="review-top"><div class="review-avatar">${r.name[0]}</div><b>${r.name}</b><span class="review-stars">${stars(r.stars)}</span></div><p>${escapeHtml(r.text)}</p><small>${r.date}</small></div>`).join('')||'<div class="result">لا توجد تقييمات منشورة حالياً.</div>';
+ 
+ bBarber.innerHTML=data.barbers.map(b=>`<option value="${b.id}">${b.name} — ${b.status}</option>`).join('');
+ bService.innerHTML=data.services.map(s=>`<option value="${s.id}">${s.name} — ${s.duration} دقيقة</option>`).join('');
+ bDay.innerHTML=days.map(d=>`<option>${d}</option>`).join('');
+ refreshBookingTimes();
+}
+
+function refreshBookingTimes(){
+ const bid=+bBarber.value,sid=+bService.value,day=bDay.value,b=data.barbers.find(x=>x.id===bid),s=data.services.find(x=>x.id===sid);
+ if(day==='الأحد'){
+  bTime.innerHTML='<option value="">يوم الأحد عطلة رسمية</option>';
+  bookingResult.textContent='المحل مغلق يوم الأحد، يرجى اختيار يوم آخر للحجز.';
+  return;
+ }
+ let times=b&&s?timesForRanges(b.availability[day]||[],s.duration):[];
+ const used=data.bookings.filter(x=>x.barberId===bid&&x.day===day&&x.status!=='ملغي').map(x=>x.time);
+ times=times.filter(t=>!used.includes(t));
+ bTime.innerHTML=times.length?times.map(t=>`<option>${t}</option>`).join(''):'<option value="">لا يوجد وقت متاح</option>';
+ if(times.length > 0) bookingResult.textContent='اختر الوقت المناسب ثم اضغط على إرسال الحجز.';
+}
+
+function submitBooking(){
+ const bid=+bBarber.value,sid=+bService.value,day=bDay.value,time=bTime.value,name=bName.value.trim(),phone=bPhone.value.trim();
+ if(day === 'الأحد') { bookingResult.textContent='عذراً، يوم الأحد عطلة رسمية للمحل.'; return; }
+ if(!name||!phone){bookingResult.textContent='اكتب الاسم ورقم الهاتف أولاً.';return}
+ if(!data.store.open){bookingResult.textContent='المحل مغلق حالياً.';return}
+ if(!time){bookingResult.textContent='لا يوجد وقت متاح لهذا الاختيار.';return}
+ const b=data.barbers.find(x=>x.id===bid),s=data.services.find(x=>x.id===sid);
+ data.bookings.push({id:Date.now(),barberId:bid,serviceId:sid,day,time,name,phone,status:'قيد المراجعة'});
+ save();refreshBookingTimes();bookingResult.innerHTML=`✅ تم إرسال طلب الحجز.<br>${b.name} • ${s.name} (${s.duration} دقيقة) • ${day} ${time}<br>الحالة: <b>قيد المراجعة</b>`;showToast('تم إرسال طلب الحجز');
+}
+
+function renderAdmin(){
+ const av=data.barbers.filter(b=>b.status==='متاح').length,busy=data.barbers.filter(b=>b.status==='مشغول').length,off=data.barbers.filter(b=>b.status==='غير متاح').length;
+ const visible=data.reviews.filter(r=>r.visible),avg=visible.length?visible.reduce((a,r)=>a+r.stars,0)/visible.length:0;
+ mAvail.textContent=av;mBusy.textContent=busy;mOff.textContent=off;mRating.textContent=avg.toFixed(1);
+ shopOpen.value=data.store.openTime;shopClose.value=data.store.closeTime;shopStateText.textContent=data.store.open?'المحل مفتوح':'المحل مغلق';shopToggle.textContent=data.store.open?'إغلاق المحل':'فتح المحل';
+ adminBarbers.innerHTML=data.barbers.map(b=>`<div class="admin-person"><div class="person-head"><div class="avatar">${b.name[0]}</div><div class="person-title"><b>${b.name}</b><div class="muted">${b.specialty}</div></div><span class="pill ${statusClass(b.status)}">${b.status}</span></div>
+<div class="form-grid" style="margin-top:12px;grid-template-columns:1fr 1fr">
+<div class="field"><label>اسم الحلاق</label><input value="${escapeAttr(b.name)}" onchange="updateBarber(${b.id},'name',this.value)"></div>
+<div class="field"><label>التخصص / الوصف</label><input value="${escapeAttr(b.specialty)}" onchange="updateBarber(${b.id},'specialty',this.value)"></div>
+</div>
+<select class="status-select" onchange="setStatus(${b.id},this.value)"><option ${b.status==='متاح'?'selected':''}>متاح</option><option ${b.status==='مشغول'?'selected':''}>مشغول</option><option ${b.status==='غير متاح'?'selected':''}>غير متاح</option></select><div class="availability"><div style="display:flex;justify-content:space-between;align-items:center"><b>أوقات التوفر</b><span class="muted">اضغط على اليوم</span></div><div class="toolbar" style="margin-top:8px">${allDays.map(d=>`<button class="btn small" onclick="editDay(${b.id},'${d}')">${d}</button>`).join('')}</div><div class="note-box">${availabilitySummary(b.availability)}</div></div></div>`).join('');
+ adminServices.innerHTML=data.services.map(s=>`<div class="service-row"><div><b>${s.name}</b><div class="muted">${s.duration} دقيقة</div></div><button class="btn small" onclick="editService(${s.id})">تعديل</button></div>`).join('');
+ 
+ // عرض خيارات رفع وإدارة صور أعمالنا
+ adminWorks.innerHTML=data.works.map((w, idx)=>`
+   <div class="admin-work">
+     <div class="thumb">
+       ${w.image_url ? `<img src="${w.image_url}" alt="عمل">` : `✂️`}
+     </div>
+     <div class="body">
+       <input placeholder="اسم العمل" value="${escapeAttr(w.title||'')}" onchange="updateWork(${w.id},'title',this.value)">
+       <input placeholder="الوصف الفرعي" value="${escapeAttr(w.sub||'')}" onchange="updateWork(${w.id},'sub',this.value)">
+       
+       <label class="file-upload-btn">
+         📁 رفع صورة من الجهاز
+         <input type="file" accept="image/*" style="display:none;" onchange="uploadWorkImage(event, ${w.id})">
+       </label>
+
+       <input placeholder="أو وضع رابط صورة URL" value="${escapeAttr(w.image_url||'')}" onchange="updateWork(${w.id},'image_url',this.value)">
+       
+       <button class="btn danger small" onclick="deleteWork(${w.id})">حذف العمل</button>
+     </div>
+   </div>
+ `).join('');
+
+ reviewsAdminTable.innerHTML=[...data.reviews].reverse().map(r=>`<tr><td><b>${escapeHtml(r.name)}</b></td><td class="starview">${stars(r.stars)}</td><td>${escapeHtml(r.text)}</td><td>${r.date}</td><td>${r.visible?'<span class="green">ظاهر</span>':'<span class="red">مخفي</span>'}</td><td><button class="btn small ${r.visible?'danger':''}" onclick="toggleReview(${r.id})">${r.visible?'إخفاء':'إظهار'}</button></td></tr>`).join('')||'<tr><td colspan="6">لا توجد تقييمات</td></tr>';
+  addressInput.value=data.store.address||''; mapUrlInput.value=data.store.mapUrl||''; phoneInput.value=data.store.phone||''; whatsappNumberInput.value=data.store.whatsappNumber||''; whatsappUrlInput.value=data.store.whatsappUrl||''; instagramHandleInput.value=data.store.instagramHandle||''; instagramUrlInput.value=data.store.instagramUrl||''; contactNoteInput.value=data.store.contactNote||'';
+}
+
+function saveContactInfo(){data.store.address=addressInput.value.trim();data.store.mapUrl=mapUrlInput.value.trim();data.store.phone=phoneInput.value.trim();data.store.whatsappNumber=whatsappNumberInput.value.trim();data.store.whatsappUrl=whatsappUrlInput.value.trim();data.store.instagramHandle=instagramHandleInput.value.trim();data.store.instagramUrl=instagramUrlInput.value.trim();data.store.contactNote=contactNoteInput.value.trim()||'يمكنك التواصل معنا للحجز والاستفسار.';save();renderAll();showToast('تم حفظ معلومات المحل والتواصل')}
+function updateBarber(id,key,value){
+ const b=data.barbers.find(x=>x.id===id);
+ if(!b)return;
+ value=value.trim();
+ if(key==='name' && !value){showToast('اسم الحلاق لا يمكن أن يكون فارغاً');renderAll();return}
+ b[key]=value;save();renderAll();showToast('تم تحديث بيانات الحلاق');
+}
+function setStatus(id,status){const b=data.barbers.find(x=>x.id===id);if(b){b.status=status;save();renderAll();showToast('تم تحديث حالة الحلاق')}}
+function toggleShop(){data.store.open=!data.store.open;save();renderAll();showToast(data.store.open?'تم فتح المحل':'تم إغلاق المحل')}
+function saveShopHours(){data.store.openTime=shopOpen.value;data.store.closeTime=shopClose.value;save();renderAll();showToast('تم حفظ أوقات المحل')}
+function editDay(id,day){
+ const b=data.barbers.find(x=>x.id===id),r=b.availability[day]||[];
+ modalTitle.textContent=`تعديل توفر ${b.name} — ${day}`;
+ modalBody.innerHTML=`<div class="result" style="margin:0">يمكنك وضع فترتين في نفس اليوم. مثال: 10:00–16:00 ثم 18:00–22:00. اترك الحقول فارغة لتعطيل اليوم.</div><div class="form-grid" style="margin-top:12px"><div class="field"><label>الفترة الأولى من</label><input id="d1" type="time" value="${r[0]?.[0]||''}"></div><div class="field"><label>الفترة الأولى إلى</label><input id="d2" type="time" value="${r[0]?.[1]||''}"></div><div class="field"><label>الفترة الثانية من</label><input id="d3" type="time" value="${r[1]?.[0]||''}"></div><div class="field"><label>الفترة الثانية إلى</label><input id="d4" type="time" value="${r[1]?.[1]||''}"></div></div><button class="btn white" style="width:100%;margin-top:13px" onclick="saveDay(${id},'${day}')">حفظ التوفر</button>`;
+ modal.classList.add('show');
+}
+function saveDay(id,day){const b=data.barbers.find(x=>x.id===id),r=[];if(d1.value&&d2.value)r.push([d1.value,d2.value]);if(d3.value&&d4.value)r.push([d3.value,d4.value]);b.availability[day]=r;save();closeModal();renderAll();showToast('تم حفظ توفر الحلاق')}
+function editService(id){
+ const s=data.services.find(x=>x.id===id);modalTitle.textContent='تعديل الخدمة';
+ modalBody.innerHTML=`<div class="field"><label>اسم الخدمة</label><input id="sn" value="${escapeAttr(s.name)}"></div><div class="field" style="margin-top:10px"><label>المدة بالدقائق</label><input id="sd" type="number" value="${s.duration}"></div><button class="btn white" style="width:100%;margin-top:13px" onclick="saveService(${id})">حفظ</button>`;modal.classList.add('show');
+}
+function saveService(id){const s=data.services.find(x=>x.id===id);s.name=sn.value.trim();s.duration=+sd.value;save();closeModal();renderAll();showToast('تم تعديل الخدمة')}
+
+// إضافة وتحديث وتحميل صور أعمالنا
+function addWork(){const w={id:Date.now(),title:'عمل جديد',image_url:'',sub:'E&M BARBER'};data.works.push(w);save();renderAll();showToast('تمت إضافة عمل جديد')}
+function updateWork(id,key,value){const w=data.works.find(x=>x.id===id);if(w){w[key]=value;save();renderAll()}}
+function uploadWorkImage(event, id){
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e){
+    updateWork(id, 'image_url', e.target.result);
+    showToast('تم رفع الصورة بنجاح');
+  };
+  reader.readAsDataURL(file);
+}
+function deleteWork(id){if(confirm('حذف هذا العمل؟')){data.works=data.works.filter(x=>x.id!==id);save();renderAll();showToast('تم حذف العمل')}}
+
+function openReview(){
+ modalTitle.textContent='شاركنا تقييمك';
+ modalBody.innerHTML=`<div class="field"><label>اسمك</label><input id="rn" placeholder="اسم الزبون"></div><div class="field" style="margin-top:10px"><label>التقييم</label><select id="rs"><option value="5">★★★★★ — ممتاز</option><option value="4">★★★★☆ — ممتاز</option><option value="3">★★★☆☆ — جيد</option><option value="2">★★☆☆☆ — يحتاج تحسين</option><option value="1">★☆☆☆☆ — ضعيف</option></select></div><div class="field" style="margin-top:10px"><label>تعليقك</label><textarea id="rt" placeholder="احكيلنا عن تجربتك"></textarea></div><button class="btn white" style="width:100%;margin-top:13px" onclick="saveReview()">إرسال التقييم</button><div class="hint">التقييم الجديد يظهر للإدارة أولاً، وبحسب إعدادات النظام يمكن اعتماده أو إخفاؤه.</div>`;modal.classList.add('show');
+}
+function saveReview(){const name=rn.value.trim(),text=rt.value.trim(),starsV=+rs.value;if(!name||!text){showToast('اكتب الاسم والتعليق');return}data.reviews.push({id:Date.now(),name,stars:starsV,text,date:new Date().toISOString().slice(0,10),visible:true});save();closeModal();renderAll();showToast('شكراً لتقييمك')}
+function toggleReview(id){const r=data.reviews.find(x=>x.id===id);if(r){r.visible=!r.visible;save();renderAll();showToast(r.visible?'تم إظهار التقييم':'تم إخفاء التقييم')}}
+function closeModal(e){if(!e||e.target===modal)modal.classList.remove('show')}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
+function escapeAttr(s){return escapeHtml(s)}
+function showToast(msg){toast.textContent=msg;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2200)}
+
+renderAll();
+document.getElementById('loginPass').addEventListener('keydown',e=>{if(e.key==='Enter')loginAdmin()});
+document.getElementById('loginUser').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('loginPass').focus()});
+</script>
+</body>
+</html>
